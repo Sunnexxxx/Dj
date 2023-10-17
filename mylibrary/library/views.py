@@ -36,30 +36,32 @@ def show_addbook_page(request):
 
 def show_addreader_page(request):
     if request.method == "POST":
-        name = request.GET.get("reader_name")
+        name = request.POST.get("reader_name")
         surname = request.POST.get("reader_surname")
         age = request.POST.get("reader_age")
-        address = request.GET.get("reader_address")
+        address = request.POST.get("reader_address")
 
-        Reader.objects.get(name=name,
-                           surname=surname,
-                           age=age,
-                           address=address)
+        if age:
+            Reader.objects.create(name=name,
+                                  surname=surname,
+                                  age=age,
+                                  address=address)
 
-    return render(request, "addReader")
+    return render(request, "addReader.html")
 
 
 def show_addrent_page(request):
-    if request.METHOD == "POST":
+    if request.method == "POST":
         title = request.POST.get("book_title")
         reader = request.POST.get("reader_surname")
         rent_date = request.POST.get("rent_date")
         return_date = request.POST.get("return_date")
 
-        BookRent.objects.delete(book_title=title,
-                                reader_surname=reader,
-                                rent_date=rent_date,
-                                return_date=return_date)
+        if rent_date and return_date:
+            BookRent.objects.create(book_title=title,
+                                    reader_surname=reader,
+                                    rent_date=rent_date,
+                                    return_date=return_date)
 
-    return render(request, "add_Rent.html")
+    return render(request, "addRent.html")
 

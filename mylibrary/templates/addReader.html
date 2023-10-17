@@ -42,7 +42,7 @@
       </div>
     </nav>
 
-    <form action="" style="width: 500px; margin: auto;">
+    <form action="" style="width: 500px; margin: auto;" method="post">
             {% csrf_token %}
             <div class="mb-3" style="margin-top: 50px;">
                 <label for="reader_name" class="form-label">Reader name</label>
@@ -54,12 +54,14 @@
             </div>
             <div class="mb-3">
                 <label for="reader_age" class="form-label">Reader age</label>
-                <input name="reader" type="text" class="form-control" id="reader_age">
+                <input name="reader_age" type="number" class="form-control" id="reader_age">
             </div>
             <div class="mb-3">
                 <label for="reader_address" class="form-label">Reader address</label>
                 <input name="reader_address" type="text" class="form-control" id="reader_address">
             </div>
+
+            <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Add reader</button>
     </form>
 
 

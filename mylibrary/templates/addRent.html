@@ -42,11 +42,11 @@
       </div>
     </nav>
 
-    <form action="" method="gett" style="width: 500px; margin: auto;">
+    <form action="" method="post" style="width: 500px; margin: auto;">
             {% csrf_token %}
             <div class="mb-3" style="margin-top: 50px;">
                 <label for="book_title" class="form-label">Book title</label>
-                <input type="text" class="form-control" id="book_title">
+                <input name="book_title" type="text" class="form-control" id="book_title">
             </div>
             <div class="mb-3">
                 <label for="reader_surname" class="form-label">Reader surname</label>
@@ -57,11 +57,11 @@
                 <input name="rent_date" type="date" class="form-control" id="rent_date">
             </div>
             <div class="mb-3">
-                <label for="return_data" class="form-label">Return data</label>
-                <input name="return_data" type="text" class="form-control" id="return_data">
+                <label for="return_date" class="form-label">Return date</label>
+                <input name="return_date" type="date" class="form-control" id="return_date">
             </div>
 
-            <button name="add_button" type="reset" class="btn btn-primary" style="margin-top: 20px;">Add book rent</button>
+            <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Add book rent</button>
     </form>
 
 
