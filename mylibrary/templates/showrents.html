@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.111.3">
-  <title>Add reader</title>
+  <title>Show all books</title>
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/cover/">
   <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
@@ -48,32 +48,38 @@
       </div>
     </nav>
 
-    <form action="" style="width: 500px; margin: auto;" method="post">
-            {% csrf_token %}
-            <div class="mb-3" style="margin-top: 50px;">
-                <label for="reader_name" class="form-label">Reader name</label>
-                <input name="reader_name" type="text" class="form-control" id="reader_name">
-            </div>
-            <div class="mb-3">
-                <label for="reader_surname" class="form-label">Reader surname</label>
-                <input name="reader_surname" type="text" class="form-control" id="reader_surname">
-            </div>
-            <div class="mb-3">
-                <label for="reader_age" class="form-label">Reader age</label>
-                <input name="reader_age" type="number" class="form-control" id="reader_age">
-            </div>
-            <div class="mb-3">
-                <label for="reader_address" class="form-label">Reader address</label>
-                <input name="reader_address" type="text" class="form-control" id="reader_address">
-            </div>
 
-            <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Add reader</button>
-    </form>
-
-
-    <footer class="mt-auto text-white-50">
-      <p style="margin-top: 100px;">Library Inc.</p>
-    </footer>
+    <main class="px-3" style="padding-top: 5%;">
+      <h1>Аренда</h1>
+      <p class="lead">Хорошая книга – бесконечна.</p>
+      <div style="height: 50px; width: 600px; margin: auto; margin-top: 50px;">
+        {% if rents %}
+          {% for rent in rents %}
+            <p style="text-align: left;">{{ rent }}</p>
+            <form class="delete" action="" method="post" style="margin: -40px -90px 10px 600px; display: flex; justify-content: flex-end;
+            padding: 0px;
+            border: 2px solid black;
+            border-radius: 10px;
+            button-decoration: none;
+            ">
+              {% csrf_token %}
+                    <input type="hidden" name="delete" value="{{ book.title }}" style="background-color: none; text-decoration: none;">
+                    <button type="submit" style=" width: 100px; height:30px;background-color: none; border: none; border-radius: 8px;">Удалить</button>
+            </form>
+            <form class="update" action="" method="post" style="margin: -45px -200px 20px 700px; display: flex; justify-content: flex-end;padding: 0px;
+            border: 2px solid black;
+            border-radius: 10px;
+            button-decoration: none;">
+              {% csrf_token %}
+                    <input type="hidden" name="delete" value="{{ book.id }}">
+                    <button type="submit" style=" width: 100px; height:30px;background-color: none; border: none; border-radius: 8px;">Изменить</button>
+            </form>
+          {% endfor %}
+        {% else %}
+          <h1>Library, son...</h1>
+        {% endif %}
+      </div>
+    </main>
   </div>
 
 </body>

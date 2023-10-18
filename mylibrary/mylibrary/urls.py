@@ -24,6 +24,8 @@ urlpatterns = [
     path('addbook/', views.show_addbook_page),
     path('addreader/', views.show_addreader_page),
     path('addrent/', views.show_addrent_page),
+    path('showreaders/', views.show_readers),
+    path('showrents/', views.show_rents),
     path('admin/', admin.site.urls),
 ]
 

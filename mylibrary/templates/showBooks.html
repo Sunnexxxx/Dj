@@ -35,7 +35,13 @@
               <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/addreader">Add reader</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/showreaders">Show readers</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/addrent">Add rent</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/showrents">Show rents</a>
             </li>
           </ul>
         </div>
@@ -50,6 +56,24 @@
         {% if books %}
           {% for book in books %}
             <p style="text-align: left;">{{ book }}</p>
+            <form class="delete" action="" method="post" style="margin: -40px -90px 10px 500px; display: flex; justify-content: flex-end;
+            padding: 0px;
+            border: 2px solid black;
+            border-radius: 10px;
+            button-decoration: none;
+            ">
+              {% csrf_token %}
+                    <input type="hidden" name="delete" value="{{ book.title }}" style="background-color: none; text-decoration: none;">
+                    <button type="submit" style=" width: 100px; height:30px;background-color: none; border: none; border-radius: 8px;">Удалить</button>
+            </form>
+            <form class="update" action="" method="post" style="margin: -45px -200px 20px 600px; display: flex; justify-content: flex-end;padding: 0px;
+            border: 2px solid black;
+            border-radius: 10px;
+            button-decoration: none;">
+              {% csrf_token %}
+                    <input type="hidden" name="delete" value="{{ book.id }}">
+                    <button type="submit" style=" width: 100px; height:30px;background-color: none; border: none; border-radius: 8px;">Изменить</button>
+            </form>
           {% endfor %}
         {% else %}
           <h1>Library, son...</h1>

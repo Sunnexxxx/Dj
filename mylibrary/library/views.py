@@ -9,7 +9,11 @@ def show_start_page(request):
 
 def show_showbooks_page(request):
     context = {"books": Book.objects.all()}
+    try:
+        Book.objects.filter(id=request.POST['delete']).delete()
 
+    except:
+        pass
     return render(request, "showBooks.html", context=context)
 
 
@@ -63,5 +67,25 @@ def show_addrent_page(request):
                                     rent_date=rent_date,
                                     return_date=return_date)
 
+
     return render(request, "addRent.html")
 
+
+def show_readers(request):
+    context = {"readers": Reader.objects.all()}
+    try:
+        Reader.objects.filter(id=request.POST['delete']).delete()
+
+    except:
+        pass
+    return render(request, "showreaders.html", context=context)
+
+
+def show_rents(request):
+    context = {"rents": BookRent.objects.all()}
+    try:
+        BookRent.objects.filter(id=request.POST['delete']).delete()
+
+    except:
+        pass
+    return render(request, "showrents.html", context=context)
