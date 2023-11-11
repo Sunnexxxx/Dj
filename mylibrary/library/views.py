@@ -10,8 +10,7 @@ def show_start_page(request):
 def show_showbooks_page(request):
     context = {"books": Book.objects.all()}
     try:
-        Book.objects.filter(id=request.POST['delete']).delete()
-
+        Book.objects.filter(title=request.POST['delete']).delete()
     except:
         pass
     return render(request, "showBooks.html", context=context)
@@ -76,6 +75,7 @@ def show_readers(request):
     try:
         Reader.objects.filter(id=request.POST['delete']).delete()
 
+
     except:
         pass
     return render(request, "showreaders.html", context=context)
@@ -84,6 +84,64 @@ def show_readers(request):
 def show_rents(request):
     context = {"rents": BookRent.objects.all()}
     try:
+        BookRent.objects.filter(id=request.POST['delete']).delete()
+
+    except:
+        pass
+    return render(request, "showrents.html", context=context)
+
+# from django.shortcuts import render, get_object_or_404, redirect
+# from .models import Book, Reader, BookRent
+#
+# def show_showbooks_page(request):
+#     context = {"books": Book.objects.all()}
+#
+#     if request.method == "POST":
+#         # Check if the form was submitted to delete a book
+#         book_id = request.POST.get('delete')
+#         if book_id:
+#             book = get_object_or_404(Book, id=book_id)
+#             book.delete()
+#
+#     return render(request, "showBooks.html", context=context)
+#
+# def show_readers(request):
+#     context = {"readers": Reader.objects.all()}
+#
+#     if request.method == "POST":
+#         # Check if the form was submitted to delete a reader
+#         reader_id = request.POST.get('delete')
+#         if reader_id:
+#             reader = get_object_or_404(Reader, id=reader_id)
+#             reader.delete()
+#
+#     return render(request, "showreaders.html", context=context)
+#
+# def show_rents(request):
+#     context = {"rents": BookRent.objects.all()}
+#
+#     if request.method == "POST":
+#         # Check if the form was submitted to delete a rental
+#         rental_id = request.POST.get('delete')
+#         if rental_id:
+#             rental = get_object_or_404(BookRent, id=rental_id)
+#             rental.delete()
+#
+#     return render(request, "showrents.html", context=context)
+def show_readers(request):
+    context = {"readers": Reader.objects.all()}
+    try:
+        # Удаление читателя по ID
+        Reader.objects.filter(id=request.POST['delete']).delete()
+
+    except:
+        pass
+    return render(request, "showreaders.html", context=context)
+
+def show_rents(request):
+    context = {"rents": BookRent.objects.all()}
+    try:
+        # Удаление аренды книги по ID
         BookRent.objects.filter(id=request.POST['delete']).delete()
 
     except:

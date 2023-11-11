@@ -63,16 +63,16 @@
             button-decoration: none;
             ">
               {% csrf_token %}
-                    <input type="hidden" name="delete" value="{{ book.title }}" style="background-color: none; text-decoration: none;">
-                    <button type="submit" style=" width: 100px; height:30px;background-color: none; border: none; border-radius: 8px;">Удалить</button>
+                    <input type="hidden" name="update" value="{{ rent.id }}" style="background-color: none; text-decoration: none;">
+                    <button type="submit" style=" width: 100px; height:30px;background-color: none; border: none; border-radius: 8px;">Изменить</button>
             </form>
             <form class="update" action="" method="post" style="margin: -45px -200px 20px 700px; display: flex; justify-content: flex-end;padding: 0px;
             border: 2px solid black;
             border-radius: 10px;
             button-decoration: none;">
               {% csrf_token %}
-                    <input type="hidden" name="delete" value="{{ book.id }}">
-                    <button type="submit" style=" width: 100px; height:30px;background-color: none; border: none; border-radius: 8px;">Изменить</button>
+                    <input type="hidden" name="delete" value="{{ rent.id }}">
+                    <button type="submit" style=" width: 100px; height:30px;background-color: none; border: none; border-radius: 8px;">Удалить</button>
             </form>
           {% endfor %}
         {% else %}

@@ -63,7 +63,7 @@
             button-decoration: none;
             ">
               {% csrf_token %}
-                    <input type="hidden" name="delete" value="{{ book.title }}" style="background-color: none; text-decoration: none;">
+                    <input type="hidden" name="delete" value="{{ reader.id }}" style="background-color: none; text-decoration: none;">
                     <button type="submit" style=" width: 100px; height:30px;background-color: none; border: none; border-radius: 8px;">Удалить</button>
             </form>
             <form class="update" action="" method="post" style="margin: -45px -200px 20px 600px; display: flex; justify-content: flex-end;padding: 0px;
@@ -71,7 +71,7 @@
             border-radius: 10px;
             button-decoration: none;">
               {% csrf_token %}
-                    <input type="hidden" name="delete" value="{{ book.id }}">
+                    <input type="hidden" name="update" value="{{ reader.id }}">
                     <button type="submit" style=" width: 100px; height:30px;background-color: none; border: none; border-radius: 8px;">Изменить</button>
             </form>
           {% endfor %}
